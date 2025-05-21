@@ -523,61 +523,70 @@
 <script>
   // Ce code JS empêche la redirection vers l'URL Google Apps Script (comportement par défaut de fetch si on ne traite pas la réponse)
 
-  document.getElementById('ao-form').addEventListener('submit', function (e) {
-    e.preventDefault();
+document.getElementById('ao-form').addEventListener('submit', function (e) {
+  e.preventDefault();
 
-    const form = e.target;
-    const buildings = [];
+  const form = e.target;
+  const buildings = [];
 
-    document.querySelectorAll('.building-group').forEach(group => {
-      const parts = [];
-      group.querySelectorAll('input[name="parts[]"]:checked').forEach(cb => parts.push(cb.value));
+  document.querySelectorAll('.building-group').forEach(group => {
+    const parts = [];
+    group.querySelectorAll('input[name="parts[]"]:checked').forEach(cb => parts.push(cb.value));
 
-      buildings.push({
-        street: group.querySelector('input[name="street[]"]').value,
-        zip: group.querySelector('input[name="zip[]"]').value,
-        city: group.querySelector('input[name="city[]"]').value,
-        parts: parts,
-        year_fenetres: group.querySelector('input[name="year_fenetres"]')?.value || '',
-        year_facades: group.querySelector('input[name="year_facades"]')?.value || '',
-        year_toiture: group.querySelector('input[name="year_toiture"]')?.value || '',
-        year_soussol: group.querySelector('input[name="year_soussol"]')?.value || '',
-        year_pv: group.querySelector('input[name="year_pv"]')?.value || '',
-        year_thermal: group.querySelector('input[name="year_thermal"]')?.value || '',
-        year_heat: group.querySelector('input[name="year_heat"]')?.value || '',
-        year_ev: group.querySelector('input[name="year_ev"]')?.value || '',
-        comments: group.querySelector('textarea[name="comments[]"]').value
-      });
+    buildings.push({
+      street: group.querySelector('input[name="street[]"]').value,
+      zip: group.querySelector('input[name="zip[]"]').value,
+      city: group.querySelector('input[name="city[]"]').value,
+      parts: parts,
+      year_fenetres: group.querySelector('input[name="year_fenetres"]')?.value || '',
+      year_facades: group.querySelector('input[name="year_facades"]')?.value || '',
+      year_toiture: group.querySelector('input[name="year_toiture"]')?.value || '',
+      year_soussol: group.querySelector('input[name="year_soussol"]')?.value || '',
+      year_pv: group.querySelector('input[name="year_pv"]')?.value || '',
+      year_thermal: group.querySelector('input[name="year_thermal"]')?.value || '',
+      year_heat: group.querySelector('input[name="year_heat"]')?.value || '',
+      year_ev: group.querySelector('input[name="year_ev"]')?.value || '',
+      comments: group.querySelector('textarea[name="comments[]"]').value
     });
+  });
 
-    const payload = new FormData();
-    payload.append('firstName', form.querySelector('input[name="firstName"]').value);
-    payload.append('lastName', form.querySelector('input[name="lastName"]').value);
-    payload.append('email', form.querySelector('input[name="email"]').value);
-    payload.append('phone', form.querySelector('input[name="phone"]').value);
-    if (form.querySelector('input[name="sendCopy"]')?.checked) {
-      payload.append('sendCopy', 'on');
-    }
-    payload.append('buildings', JSON.stringify(buildings));
+  const payload = new FormData();
+  payload.append('firstName', form.querySelector('input[name="firstName"]').value);
+  payload.append('lastName', form.querySelector('input[name="lastName"]').value);
+  payload.append('email', form.querySelector('input[name="email"]').value);
+  payload.append('phone', form.querySelector('input[name="phone"]').value);
+  if (form.querySelector('input[name="sendCopy"]')?.checked) {
+    payload.append('sendCopy', 'on');
+  }
+  payload.append('buildings', JSON.stringify(buildings));
 
-    fetch(form.action, {
-      method: 'POST',
-      body: payload
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.result === 'success') {
+  fetch(form.action, {
+    method: 'POST',
+    body: payload
+  })
+    .then(response => {
+      if (response.redirected) {
+        return response.text().then(html => {
           alert('Votre demande a été envoyée avec succès.');
           form.reset();
-        } else {
-          alert('Erreur lors de l’envoi : ' + (data.result || 'inconnue'));
-        }
-      })
-      .catch(error => {
-        console.error('Erreur lors de l’envoi :', error);
-        alert('Une erreur s’est produite lors de l’envoi du formulaire.');
-      });
-  });
+        });
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data && data.result === 'success') {
+        alert('Votre demande a été envoyée avec succès.');
+        form.reset();
+      } else if (data && data.result) {
+        alert('Erreur : ' + data.result);
+      }
+    })
+    .catch(error => {
+      console.error('Erreur lors de l’envoi :', error);
+      alert('Une erreur s’est produite lors de l’envoi du formulaire.');
+    });
+});
+
 </script>
 
 
