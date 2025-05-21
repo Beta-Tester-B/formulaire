@@ -1,0 +1,158 @@
+/* Style global */
+
+    body {
+      /*font-family: 'Montserrat', sans-serif;*/
+      font-family: Arial, sans-serif;
+      
+      /* font-weight: 400; */
+
+      /* Ajout d'un padding-top au body pour compenser la navbar fixe */
+      padding-top: 70px;
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      /* font-weight: 600; */
+    }
+    h2, h3, h4, h5, h6, p {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    
+    /* Menu */
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Section 1 : Mission avec image de fond limitée */
+    .mission-section {
+      background-image: url('../IMGs/renovo-suisse-homepage.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center top;
+      height: 500px; /* Hauteur limitée */
+      position: relative;
+      display: flex;
+      align-items: center;
+      color: #fff;
+    }
+    /* Overlay pour améliorer la lisibilité du texte */
+    .mission-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    
+    /* Style par défaut pour les écrans larges */
+    .mission-content {
+      max-width: 900px;
+      margin-left: 17.7%;
+      text-align: left;
+    }
+
+    /* Pour les écrans plus petits */
+    @media (max-width: 768px) {
+      .mission-content {
+        margin-left: 0; /* ou ajustez selon vos besoins */
+        padding: 0 15px; /* ajouter un padding pour ne pas toucher le bord */
+        text-align: center; /* Optionnel : centrer le texte sur mobile */
+      }
+    }
+
+
+    section {
+      scroll-margin-top: 70px;
+    }
+
+    /* Section 2 : Nos services */
+    .services-section {
+      padding: 60px 0;
+    }
+    /* Section 3 : À propos de nous */
+    .about-section {
+      padding: 60px 0;
+      /*background-color: #72b6c3;*/
+      background: linear-gradient(to bottom right, #5090b6, #72b6c3);
+      color: #fff;
+    }
+
+    .card-title {
+      font-weight: bold;
+      min-height: 60px; /* Ajustez la valeur en fonction de la hauteur souhaitée */
+      margin-bottom: 10px; /* Optionnel : pour espacer du texte descriptif */
+
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      min-height: 275px; /* Ajustez la valeur selon le contenu attendu */
+    }
+    
+    .card-body {
+      flex-grow: 1;
+    }
+
+
+    /* Section 4 : Contact */
+    .contact-section {
+      padding: 60px 0;
+    }
+    /* Pied de page */
+    footer {
+      background-color: #343a40;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+
+
+  /* Style du formulaire de contact */
+.contact-section {
+  padding: 60px 0;
+}
+
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-check-label {
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Style des messages de confirmation */
+.alert {
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
