@@ -25,58 +25,8 @@
     <link rel="apple-touch-icon" sizes="180x180" href="IMGs/RENOVO-CERCLE_COULEUR-low_pied-de-page.png">
     <!-- Fichier de configuration pour Windows -->
     <link rel="manifest" href="site.webmanifest">
-
-  <!--
-  <style>
-    body { font-family: 'Montserrat', sans-serif; }
-    /* Hero image full-screen */
-
-
-    .hero {
-      background: url('IMGs/renovo-suisse-home-2.jpg') center/cover no-repeat; /* Image de fond */
-      color: #fff;
-      height: 60vh;                             /* 60% de la hauteur viewport */
-      display: flex; align-items: center;       /* centrer verticalement */
-      text-shadow: 0 0 8px rgba(0,0,0,0.7);     /* lisibilité */
-    }
-    .hero h1 { font-size: 2.5rem; font-weight: 600; }
-    .hero p { font-size: 1.2rem; }
-
-    section { padding: 4rem 0; }
-    .section-title { font-weight: 600; color: #5090b6; margin-bottom: 1.5rem; }
-    .advantage-list li { margin-bottom: 0.5rem; }
-
-    /* Formulaire */
-    #aoForm .form-section { margin-bottom: 2rem; }
-    #aoForm .form-section h5 { font-weight: 600; margin-bottom: 1rem; }
-    .building-group { border: 1px solid #ccc; border-radius: .5rem; padding: 1rem; margin-bottom: 1rem; }
-    .remove-building { cursor: pointer; color: #dc3545; }
-
-  </style>
-  -->
 </head>
 <body>
-
-  <!-- Menu de navigation identique à la page d'accueil 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="IMGs/RENOVO-LOGO_COULEUR-med.png" alt="Logo Renovo" style="height:50px;">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#mission">Accueil</a></li>
-          <li class="nav-item"><a class="nav-link" href="/#services">Prestations</a></li>
-          <li class="nav-item"><a class="nav-link" href="/#about">À propos</a></li>
-          <li class="nav-item"><a class="nav-link" href="/#contact">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  -->
 
   <!-- Menu de navigation identique à la page d'accueil -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
@@ -96,9 +46,7 @@
         </ul>
       </div>
     </div>
-</nav>
-
-
+  </nav>
 
   <!-- Section 0 : TITRE -->
   <section id="AOgroupes-titre" class="AOgroupes-titre-section">
@@ -159,28 +107,13 @@
   </section>
 
 
-  <!-- Section 2 : Avantages -->
-<!--
-  <section class="bg-light">
-    <div class="container">
-      <h2 class="section-title text-center">Avantages pour les propriétaires</h2>
-      <ul class="advantage-list list-unstyled">
-        <li>✅ Conditions tarifaires négociées grâce à l’effet de volume</li>
-        <li>✅ Processus simplifié & unique, pas de démarches individuelles multiples</li>
-        <li>✅ Expertise AMO RMO pour garantir qualité, conformité et durabilité</li>
-        <li>✅ Suivi post-chantiers et sécurisation de votre investissement</li>
-      </ul>
-    </div>
-  </section>
--->
-
   <!-- Section 3 : Formulaire AO groupés -->
   <section id="AOgroupes-formulaire" class="AOgroupes-formulaire-section">
 
     <div class="container">
       <h2 class="section-title text-center">Manifestez votre intérêt sans engagement</h2>
 
-      <form id="aoForm" action="https://script.google.com/macros/s/AKfycbyLRZg2FwV2lNBZhHFSHcslhnhivwm198zEfQZ8-HnH7DJLhu9oSbuRH9ICsZgVwIoqsA/exec" method="POST">
+      <form id="aoForm" action="https://script.google.com/macros/s/AKfycbzWE62ATn3tyUwhvsVKVHW6y6q_RGeaLU1sYGpyUCZSPE4Lf-lyTRUOjvW8kUBWgqGBKw/exec" method="POST">
         
         <!-- Coordonnées du propriétaire -->
         <div class="form-section">
@@ -246,6 +179,8 @@
                     </span>
                     <label class="form-control">Fenêtres</label>
                     <input type="number" class="form-control" name="year_fenetres" placeholder="Année travaux" min="2026" max="2035">
+                    <!-- <input type="number" class="form-control" name="year_fenetres" placeholder="Année fenêtres" min="2026" max="2035"> -->
+
                   </div>
                 </div>
                 <!-- Façades -->
@@ -360,7 +295,8 @@
   <!-- Scripts Bootstrap & dynamique -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Ajouter/supprimer des bâtiments -->
+
+  <!-- Ajouter de nouveaux bâtiments -->
   <script>
     const container = document.getElementById('buildingsContainer');
     const addBtn    = document.getElementById('addBuilding');
@@ -406,7 +342,8 @@
     updateBuildingNumbers();
 </script>
 
-<!-- Récupérer les données des bâtiments 
+<!-- Récolter les données des bâtiments 
+
 <script>
   const form = document.getElementById('aoForm');
   form.addEventListener('submit', e => {
@@ -435,7 +372,6 @@
           comments: group.querySelector('textarea').value
         };
       });
-        
 
     const payload = new FormData();
  
@@ -459,15 +395,17 @@
 </script>
 -->
 
-<!-- Récupérer les données des bâtiments 
+
+<!-- Récupérer les données des bâtiments
 <script>
+    // Ce code JS empêche la redirection vers l'URL Google Apps Script (comportement par défaut de fetch si on ne traite pas la réponse)
+
   document.getElementById('ao-form').addEventListener('submit', function (e) {
     e.preventDefault();
 
     const form = e.target;
-    const formData = new FormData(form);
-
     const buildings = [];
+
     document.querySelectorAll('.building-group').forEach(group => {
       const parts = [];
       group.querySelectorAll('input[name="parts[]"]:checked').forEach(cb => parts.push(cb.value));
@@ -503,91 +441,104 @@
       method: 'POST',
       body: payload
     })
-      .then(response => response.json())
+      .then(response => {
+        if (response.redirected) {
+          return response.text().then(html => {
+            alert('Votre demande a été envoyée avec succès.');
+            form.reset();
+          });
+        }
+        return response.json();
+      })
       .then(data => {
-        if (data.result === 'success') {
+        if (data && data.result === 'success') {
           alert('Votre demande a été envoyée avec succès.');
           form.reset();
-        } else {
-          alert('Erreur : ' + (data.result || 'inconnue'));
+        } else if (data && data.result) {
+          alert('Erreur : ' + data.result);
         }
       })
       .catch(error => {
         console.error('Erreur lors de l’envoi :', error);
-        alert('Erreur lors de l’envoi.');
+        alert('Une erreur s’est produite lors de l’envoi du formulaire.');
       });
   });
+
 </script>
 -->
 
+
+<!-- Récupérer les données des bâtiments-->
 <script>
-  // Ce code JS empêche la redirection vers l'URL Google Apps Script (comportement par défaut de fetch si on ne traite pas la réponse)
+    // Ce code JS empêche la redirection vers l'URL Google Apps Script (comportement par défaut de fetch si on ne traite pas la réponse)
 
-document.getElementById('ao-form').addEventListener('submit', function (e) {
-  e.preventDefault();
+  document.getElementById('ao-form').addEventListener('submit', function (e) {
+    e.preventDefault();
 
-  const form = e.target;
-  const buildings = [];
+    const form = e.target;
+    const buildings = [];
 
-  document.querySelectorAll('.building-group').forEach(group => {
-    const parts = [];
-    group.querySelectorAll('input[name="parts[]"]:checked').forEach(cb => parts.push(cb.value));
+    document.querySelectorAll('.building-group').forEach(group => {
+      const parts = [];
+      group.querySelectorAll('input[name="parts[]"]:checked').forEach(cb => parts.push(cb.value));
 
-    buildings.push({
-      street: group.querySelector('input[name="street[]"]').value,
-      zip: group.querySelector('input[name="zip[]"]').value,
-      city: group.querySelector('input[name="city[]"]').value,
-      parts: parts,
-      year_fenetres: group.querySelector('input[name="year_fenetres"]')?.value || '',
-      year_facades: group.querySelector('input[name="year_facades"]')?.value || '',
-      year_toiture: group.querySelector('input[name="year_toiture"]')?.value || '',
-      year_soussol: group.querySelector('input[name="year_soussol"]')?.value || '',
-      year_pv: group.querySelector('input[name="year_pv"]')?.value || '',
-      year_thermal: group.querySelector('input[name="year_thermal"]')?.value || '',
-      year_heat: group.querySelector('input[name="year_heat"]')?.value || '',
-      year_ev: group.querySelector('input[name="year_ev"]')?.value || '',
-      comments: group.querySelector('textarea[name="comments[]"]').value
+      buildings.push({
+        street: group.querySelector('input[name="street[]"]').value,
+        zip: group.querySelector('input[name="zip[]"]').value,
+        city: group.querySelector('input[name="city[]"]').value,
+        parts: parts,
+        year_fenetres: group.querySelector('input[name="year_fenetres"]')?.value || '',
+        year_facades: group.querySelector('input[name="year_facades"]')?.value || '',
+        year_toiture: group.querySelector('input[name="year_toiture"]')?.value || '',
+        year_soussol: group.querySelector('input[name="year_soussol"]')?.value || '',
+        year_pv: group.querySelector('input[name="year_pv"]')?.value || '',
+        year_thermal: group.querySelector('input[name="year_thermal"]')?.value || '',
+        year_heat: group.querySelector('input[name="year_heat"]')?.value || '',
+        year_ev: group.querySelector('input[name="year_ev"]')?.value || '',
+        comments: group.querySelector('textarea[name="comments[]"]').value
+      });
     });
-  });
 
-  const payload = new FormData();
-  payload.append('firstName', form.querySelector('input[name="firstName"]').value);
-  payload.append('lastName', form.querySelector('input[name="lastName"]').value);
-  payload.append('email', form.querySelector('input[name="email"]').value);
-  payload.append('phone', form.querySelector('input[name="phone"]').value);
-  if (form.querySelector('input[name="sendCopy"]')?.checked) {
-    payload.append('sendCopy', 'on');
-  }
-  payload.append('buildings', JSON.stringify(buildings));
+    const payload = new FormData();
+    payload.append('firstName', form.querySelector('input[name="firstName"]').value);
+    payload.append('lastName', form.querySelector('input[name="lastName"]').value);
+    payload.append('email', form.querySelector('input[name="email"]').value);
+    payload.append('phone', form.querySelector('input[name="phone"]').value);
+    if (form.querySelector('input[name="sendCopy"]')?.checked) {
+      payload.append('sendCopy', 'on');
+    }
+    payload.append('buildings', JSON.stringify(buildings));
 
-  fetch(form.action, {
-    method: 'POST',
-    body: payload
-  })
-    .then(response => {
-      if (response.redirected) {
-        return response.text().then(html => {
+    fetch(form.action, {
+      method: 'POST',
+      body: payload
+    })
+      .then(response => {
+        if (response.redirected) {
+          return response.text().then(html => {
+            alert('Votre demande a été envoyée avec succès.');
+            form.reset();
+          });
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data && data.result === 'success') {
           alert('Votre demande a été envoyée avec succès.');
           form.reset();
-        });
-      }
-      return response.json();
-    })
-    .then(data => {
-      if (data && data.result === 'success') {
-        alert('Votre demande a été envoyée avec succès.');
-        form.reset();
-      } else if (data && data.result) {
-        alert('Erreur : ' + data.result);
-      }
-    })
-    .catch(error => {
-      console.error('Erreur lors de l’envoi :', error);
-      alert('Une erreur s’est produite lors de l’envoi du formulaire.');
-    });
-});
+        } else if (data && data.result) {
+          alert('Erreur : ' + data.result);
+        }
+      })
+      .catch(error => {
+        console.error('Erreur lors de l’envoi :', error);
+        alert('Une erreur s’est produite lors de l’envoi du formulaire.');
+      });
+  });
 
 </script>
+
+
 
 
 </body>
